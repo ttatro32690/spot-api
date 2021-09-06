@@ -14,6 +14,10 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.10",
+    "gql": "^1.1.2",
+    "graphql": "^15.5.2",
+    "graphql-tag": "^2.12.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
