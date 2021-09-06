@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { EXAMPLE_RESPONSE } from "../../services/queries/spotifyApi";
 
 const SpotifyPlayer = () => {
+  const [meData, setMeData] = useState({ display_name: "" });
+
   const handleClick = () => {
     fetch("http://localhost:4000/login", {
-      credentials: 'include',
-      mode: 'no-cors'
-    })
-      .then((response) => response.json())
-      .then((data) => console.log({ data }));
+      credentials: "include",
+      mode: "no-cors",
+    }).then((response) => console.log(response));
   };
 
   const handleMeClick = () => {
     fetch("http://localhost:4000/me", {
-      credentials: 'include',
-      mode: 'no-cors'
+      credentials: "include",
+      method: "get",
     })
-      .then((response) => response.json())
-      .then((data) => console.log({ data }));
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setMeData(data);
+        console.log(data);
+      });
   };
 
   return (
@@ -26,7 +31,7 @@ const SpotifyPlayer = () => {
       <button onClick={handleClick}>Login</button>
       <button onClick={handleMeClick}>Me</button>
 
-      <div>{EXAMPLE_RESPONSE.currently_playing_type}</div>
+      <div>{meData.display_name}</div>
 
       <img
         width={EXAMPLE_RESPONSE.item.album.images[0].width}
