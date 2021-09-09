@@ -22,7 +22,7 @@
     "react-dom": "^16.12.0"
   },
   "scripts": {
-    "start:dev": "webpack-dev-server",
+    "start:dev": "webpack-dev-server --host 0.0.0.0 --port 9000",
     "watch": "webpack --watch --hot"
   }
 }
